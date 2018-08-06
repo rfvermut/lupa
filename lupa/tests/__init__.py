@@ -17,7 +17,7 @@ def suite():
 
     suite = unittest.defaultTestLoader.loadTestsFromNames(tests)
     suite.addTest(doctest.DocTestSuite(lupa._lupa))
-    suite.addTest(doctest.DocFileSuite('../../README.rst'))
+    # suite.addTest(doctest.DocFileSuite('../../README.rst'))
     return suite
 
 
