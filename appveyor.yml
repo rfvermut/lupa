@@ -5,7 +5,7 @@ platform:
 - x86
 
 environment:
-  CIBW_BEFORE_BUILD: pip install Cython ; python setup.py test
+  CIBW_BEFORE_BUILD: pip install Cython && python setup.py test
   matrix:
   - WITH_LUAJIT: true
   - WITH_LUA: true
