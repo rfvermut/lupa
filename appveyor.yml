@@ -30,7 +30,7 @@ before_build:
     if ($env:WITH_LUAJIT -eq "true") {
        mv third-party/luajit luajit
        cd luajit/src
-       call msvcbuild.bat
+       ./msvcbuild.bat
        cd ../..
        dir
     }
