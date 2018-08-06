@@ -19,10 +19,11 @@ install:
 - pip install cibuildwheel==0.9.4
 - echo PLATFORM=%PLATFORM%
 - if "%PLATFORM%" EQU "x86" ( set CIBW_SKIP=*-win_amd64 )
-- if "%PLATFORM%" EQU "X64" ( set CIBW_SKIP=*-win32 )
+- if "%PLATFORM%" EQU "64" ( set CIBW_SKIP=*-win32 )
 - echo CIBW_SKIP=%CIBW_SKIP%
 
 before_build:
+- echo PLATFORM=%PLATFORM%
 - if "%PLATFORM%" EQU "x64" ( set VS_ARCH=amd64 )
 - call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" %VS_ARCH%
 
@@ -31,6 +32,9 @@ before_build:
 - cd ../../..
 
 build_script:
+- echo PLATFORM=%PLATFORM%
+- if "%PLATFORM%" EQU "x64" ( set VS_ARCH=amd64 )
+- call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" %VS_ARCH%
 - cibuildwheel --output-dir %APPVEYOR_BUILD_FOLDER%\wheelhouse
 
 artifacts:
